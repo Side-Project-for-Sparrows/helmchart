@@ -54,3 +54,4 @@ hotReload:
 
 config:
   customParsers: ""
+  service: ""
