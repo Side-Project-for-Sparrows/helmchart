@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/side-project-for-sparrows/search-service
-  tag: latest
+  tag: stg
   pullPolicy: IfNotPresent
 
 replicaCount: 1
