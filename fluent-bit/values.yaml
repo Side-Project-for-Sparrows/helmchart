@@ -37,6 +37,9 @@ networkPolicy:
   enabled: false
 hotReload:
   enabled: false
+dashboards:
+  enabled: false
+
 
 config:
   customParsers: ""
