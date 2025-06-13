@@ -23,6 +23,9 @@ openShift:
 podSecurityPolicy:
   create: false
 
+networkPolicy:
+  enabled: false
+
 resources:
   limits:
     memory: 50Mi
