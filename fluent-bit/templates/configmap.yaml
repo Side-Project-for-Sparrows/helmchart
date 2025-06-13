@@ -12,7 +12,6 @@ data:
     [INPUT]
         Name              tail
         Path              /var/log/containers/*.log
-        Parser            docker
         Docker_Mode       On
         Mem_Buf_Limit     5MB
         Skip_Long_Lines   On
