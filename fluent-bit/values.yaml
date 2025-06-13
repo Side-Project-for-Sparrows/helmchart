@@ -20,6 +20,9 @@ testFramework:
 openShift:
   enabled: false
 
+podSecurityPolicy:
+  create: false
+
 resources:
   limits:
     memory: 50Mi
