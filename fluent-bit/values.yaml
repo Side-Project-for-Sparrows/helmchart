@@ -1,3 +1,8 @@
+image:
+  repository: cr.fluentbit.io/fluent/fluent-bit
+  tag: 2.2.2
+  pullPolicy: IfNotPresent
+
 fullnameOverride: fluent-bit
 
 kind: DaemonSet
