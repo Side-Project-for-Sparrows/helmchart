@@ -1,25 +1,31 @@
-{{- if not .Values.existingConfigMap -}}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "fluent-bit.fullname" . }}
-  namespace: {{ .Release.Namespace }}
-  labels:
-    {{- include "fluent-bit.labels" . | nindent 4 }}
+  name: fluent-bit-config
 data:
-  custom_parsers.conf: |
-    {{- (tpl .Values.config.customParsers $) | nindent 4 }}
   fluent-bit.conf: |
-    {{- (tpl .Values.config.service $)  | nindent 4 }}
-    {{- (tpl .Values.config.inputs $)  | nindent 4 }}
-    {{- (tpl .Values.config.filters $)  | nindent 4 }}
-    {{- (tpl .Values.config.outputs $)  | nindent 4 }}
-  {{- range $key, $val := .Values.config.upstream }}
-  {{ $key }}: |
-    {{- (tpl $val $) | nindent 4 }}
-  {{- end }}
-  {{- range $key, $val := .Values.config.extraFiles }}
-  {{ $key }}: |
-    {{- (tpl $val $) | nindent 4 }}
-  {{- end }}
-{{- end -}}
+    [SERVICE]
+        Flush        1
+        Daemon       Off
+        Log_Level    info
+
+    [INPUT]
+        Name              tail
+        Path              /var/log/containers/*.log
+        Tag               kube.*
+        Parser            docker
+        Docker_Mode       On
+        Mem_Buf_Limit     5MB
+        Skip_Long_Lines   On
+
+    [FILTER]
+        Name                kubernetes
+        Match               kube.*
+        Kube_Tag_Prefix     kube.var.log.containers.
+        Merge_Log           On
+
+    [OUTPUT]
+        Name            kafka
+        Match           kube.*
+        Brokers         kafka.default.svc.cluster.local:9092
+        Topics          fluent-raw-logs
