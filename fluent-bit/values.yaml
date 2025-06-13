@@ -22,25 +22,6 @@ resources:
     memory: 20Mi
     cpu: 50m
 
-input:
-  tail:
-    path: /var/log/containers/*.log
-    tag: kube.*
-    parser: docker
-    docker_mode: on
-    mem_buf_limit: 5MB
-    skip_long_lines: On
-
-filter:
-  kubernetes:
-    enabled: false
-
-output:
-  kafka:
-    enabled: true
-    brokers: "kafka.default.svc.cluster.local:9092"
-    topics: "fluent-raw-logs"
-
 testFramework:
   enabled: false
 openShift:
@@ -55,3 +36,28 @@ hotReload:
 config:
   customParsers: ""
   service: ""
+  inputs: |
+    [INPUT]
+        Name              tail
+        Path              /var/log/containers/*.log
+        Tag               kube.*
+        Parser            docker
+        Docker_Mode       On
+        Mem_Buf_Limit     5MB
+        Skip_Long_Lines   On
+  filters: |
+    [FILTER]
+        Name                kubernetes
+        Match               kube.*
+        Kube_Tag_Prefix     kube.var.log.containers.
+        Kube_URL            https://kubernetes.default.svc:443
+        Merge_Log           On
+        Keep_Log            Off
+        Annotations         Off
+        Labels              Off
+  outputs: |
+    [OUTPUT]
+        Name            kafka
+        Match           kube.*
+        Brokers         kafka.default.svc.cluster.local:9092
+        Topics          fluent-raw-logs
