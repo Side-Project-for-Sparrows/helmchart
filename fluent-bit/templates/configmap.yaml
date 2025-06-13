@@ -1,24 +1,30 @@
-[SERVICE]
-  Flush         1
-  Daemon        Off
-  Log_Level     info
-  
-  [INPUT]
-  Name              tail
-  Path              /var/log/containers/*.log
-  Parser            docker
-  Docker_Mode       On
-  Mem_Buf_Limit     5MB
-  Skip_Long_Lines   On
-  
-  [FILTER]
-  Name                kubernetes
-  Match               kube.var.log.containers.*
-  Kube_Tag_Prefix     kube.var.log.containers.
-  Merge_Log           On
-  
-  [OUTPUT]
-  Name            kafka
-  Match           kube.var.log.containers.*
-  Brokers         kafka.default.svc.cluster.local:9092
-  Topics          fluent-raw-logs
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fluent-bit-config
+data:
+  fluent-bit.conf: |
+    [SERVICE]
+        Flush        1
+        Daemon       Off
+        Log_Level    info
+
+    [INPUT]
+        Name              tail
+        Path              /var/log/containers/*.log
+        Parser            docker
+        Docker_Mode       On
+        Mem_Buf_Limit     5MB
+        Skip_Long_Lines   On
+
+    [FILTER]
+        Name                kubernetes
+        Match               kube.var.log.containers.*
+        Kube_Tag_Prefix     kube.var.log.containers.
+        Merge_Log           On
+
+    [OUTPUT]
+        Name            kafka
+        Match           kube.var.log.containers.*
+        Brokers         kafka.default.svc.cluster.local:9092
+        Topics          fluent-raw-logs
