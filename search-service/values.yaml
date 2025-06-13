@@ -1,3 +1,5 @@
+name: search
+
 image:
   repository: ghcr.io/side-project-for-sparrows/search-service
   tag: stg
