@@ -2,31 +2,16 @@ fullnameOverride: fluent-bit
 
 kind: DaemonSet
 
-service:
-  enabled: false
-
-ingress:
-  enabled: false
-
 rbac:
   create: true
 
 serviceAccount:
   create: true
 
-testFramework:
+service:
   enabled: false
 
-openShift:
-  enabled: false
-
-podSecurityPolicy:
-  create: false
-
-networkPolicy:
-  enabled: false
-
-hotReload:
+ingress:
   enabled: false
 
 resources:
@@ -36,9 +21,6 @@ resources:
   requests:
     memory: 20Mi
     cpu: 50m
-
-tolerations: []
-affinity: {}
 
 input:
   tail:
@@ -58,3 +40,17 @@ output:
     enabled: true
     brokers: "kafka.default.svc.cluster.local:9092"
     topics: "fluent-raw-logs"
+
+testFramework:
+  enabled: false
+openShift:
+  enabled: false
+podSecurityPolicy:
+  create: false
+networkPolicy:
+  enabled: false
+hotReload:
+  enabled: false
+
+config:
+  customParsers: ""
