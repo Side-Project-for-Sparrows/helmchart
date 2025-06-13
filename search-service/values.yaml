@@ -4,5 +4,4 @@ image:
   pullPolicy: Always
 
 replicaCount: 1
-
 containerPort: 8080
