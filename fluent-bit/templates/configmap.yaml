@@ -24,6 +24,6 @@ data:
 
     [OUTPUT]
         Name            kafka
-        Match           kube.var.log.containers.*
+        Match           *
         Brokers         kafka.default.svc.cluster.local:9092
         Topics          fluent-raw-logs
