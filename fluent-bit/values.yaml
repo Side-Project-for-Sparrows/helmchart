@@ -1,11 +1,11 @@
+kind: DaemonSet
+
 image:
   repository: cr.fluentbit.io/fluent/fluent-bit
   tag: 2.2.2
   pullPolicy: IfNotPresent
 
 fullnameOverride: fluent-bit
-
-kind: DaemonSet
 
 rbac:
   create: true
@@ -39,7 +39,7 @@ hotReload:
   enabled: false
 dashboards:
   enabled: false
-
+luaScripts: {}
 
 config:
   customParsers: ""
