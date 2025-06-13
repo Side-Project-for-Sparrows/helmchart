@@ -1,0 +1,74 @@
+# pv-kafka.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: kafka-pv-0
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: hostpath
+  hostPath:
+    path: /mnt/data/kafka-0
+  persistentVolumeReclaimPolicy: Retain
+---
+# pv-redis.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv-0
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: hostpath
+  hostPath:
+    path: /mnt/data/redis-0
+  persistentVolumeReclaimPolicy: Retain
+---
+# pv-postgres.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: postgres-pv-0
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: hostpath
+  hostPath:
+    path: /mnt/data/postgres-0
+  persistentVolumeReclaimPolicy: Retain
+---
+# pv-mongodb.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongodb-pv-0
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: hostpath
+  hostPath:
+    path: /mnt/data/mongodb-0
+  persistentVolumeReclaimPolicy: Retain
+---
+# pv-elasticsearch.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: elastic-pv-0
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: hostpath
+  hostPath:
+    path: /mnt/data/elasticsearch-0
+  persistentVolumeReclaimPolicy: Retain
