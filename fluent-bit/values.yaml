@@ -14,6 +14,12 @@ rbac:
 serviceAccount:
   create: true
 
+testFramework:
+  enabled: false
+
+openShift:
+  enabled: false
+
 resources:
   limits:
     memory: 50Mi
