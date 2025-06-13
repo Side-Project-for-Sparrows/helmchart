@@ -12,7 +12,7 @@ data:
     [INPUT]
         Name              tail
         Path              /var/log/containers/*.log
-        Docker_Mode       On
+        Docker_Mode       Off
         Mem_Buf_Limit     5MB
         Skip_Long_Lines   On
 
