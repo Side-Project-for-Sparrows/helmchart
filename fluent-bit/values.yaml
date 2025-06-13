@@ -26,6 +26,9 @@ podSecurityPolicy:
 networkPolicy:
   enabled: false
 
+hotReload:
+  enabled: false
+
 resources:
   limits:
     memory: 50Mi
