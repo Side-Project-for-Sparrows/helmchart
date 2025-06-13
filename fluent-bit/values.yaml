@@ -1,0 +1,45 @@
+fullnameOverride: fluent-bit
+
+kind: DaemonSet
+
+service:
+  enabled: false
+
+ingress:
+  enabled: false
+
+rbac:
+  create: true
+
+serviceAccount:
+  create: true
+
+resources:
+  limits:
+    memory: 50Mi
+    cpu: 100m
+  requests:
+    memory: 20Mi
+    cpu: 50m
+
+tolerations: []
+affinity: {}
+
+input:
+  tail:
+    path: /var/log/containers/*.log
+    tag: kube.*
+    parser: docker
+    docker_mode: on
+    mem_buf_limit: 5MB
+    skip_long_lines: On
+
+filter:
+  kubernetes:
+    enabled: false
+
+output:
+  kafka:
+    enabled: true
+    brokers: "kafka.default.svc.cluster.local:9092"
+    topics: "fluent-raw-logs"
