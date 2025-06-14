@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fluent-bit-lua-script
+  namespace: default
+data:
+  filter.lua: |
+    function copy_container_name(tag, ts, record)
+    if record["kubernetes"] and record["kubernetes"]["labels"] then
+    local labels = record["kubernetes"]["labels"]
+    
+    if labels["log"] == nil then
+    return -1, ts, record  -- drop the record
+    end
+    
+    record["root_label"] = labels
+    else
+    return -1, ts, record
+    end
+    
+    return 1, ts, record
+    end

@@ -13,6 +13,7 @@ spec:
     metadata:
       labels:
         app: {{ .Values.name }}
+        log: "true"
     spec:
       containers:
         - name: {{ .Values.name }}

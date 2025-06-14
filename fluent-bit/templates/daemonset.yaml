@@ -35,6 +35,9 @@ spec:
               readOnly: true
             - name: config
               mountPath: /fluent-bit/etc/
+            - name: lua-script
+              mountPath: /fluent-bit/scripts
+              readOnly: true
       volumes:
         - name: containers
           hostPath:
@@ -48,3 +51,6 @@ spec:
         - name: config
           configMap:
             name: fluent-bit-config
+        - name: lua-script
+          configMap:
+            name: fluent-bit-lua-script
