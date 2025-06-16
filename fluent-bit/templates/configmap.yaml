@@ -38,7 +38,7 @@ data:
       Name            kafka
       Match           kube.*
       Brokers         kafka.default.svc.cluster.local:9092
-      Topics          fluent-raw-logs
+      Topics          fluent-raw-logs-create-event
       Format  json
     
     [OUTPUT]
