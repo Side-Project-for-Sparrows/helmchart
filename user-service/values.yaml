@@ -1,0 +1,9 @@
+name: user
+
+image:
+  repository: ghcr.io/side-project-for-sparrows/user-service
+  tag: stg
+  pullPolicy: Always
+
+replicaCount: 1
+containerPort: 8080
