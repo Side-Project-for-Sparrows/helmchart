@@ -1,0 +1,12 @@
+apiVersion: v2
+name: gateway-service
+version: 0.1.0
+dependencies:
+  - name: ingress-nginx
+    version: 4.10.1 # 최신 버전 확인
+    repository: https://kubernetes.github.io/ingress-nginx
+  - name: metrics-server
+    version: "3.12.1"  # 최신 버전 확인 필요
+    repository: https://kubernetes-sigs.github.io/metrics-server/
+description: A Helm chart for gateway-service
+appVersion: "1.0.0"

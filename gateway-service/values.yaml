@@ -1,0 +1,53 @@
+name: gateway
+
+image:
+  repository: ghcr.io/side-project-for-sparrows/gateway-service
+  tag: stg
+  pullPolicy: Always
+
+replicaCount: 2
+containerPort: 7080
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 7080
+
+env:
+  APP_ENV: stg
+
+hpa:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 70
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 256Mi
+
+ingress:
+  enabled: true
+  className: nginx
+  host: api.sparrow.com
+  path: /(.*)
+  pathType: Prefix
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+
+ingress-nginx:
+  controller:
+    service:
+      type: LoadBalancer
+      nodePorts:
+        http: 30080
+        https: 30443
+metrics-server:
+  namespace: kube-system
+  args:
+    - --kubelet-insecure-tls
+    - --kubelet-preferred-address-types=InternalIP
