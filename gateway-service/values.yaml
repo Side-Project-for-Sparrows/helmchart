@@ -14,7 +14,7 @@ service:
   targetPort: 7080
 
 env:
-  APP_ENV: stg
+  ENV: stg
 
 hpa:
   enabled: true

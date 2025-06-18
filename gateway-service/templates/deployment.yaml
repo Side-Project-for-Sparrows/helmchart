@@ -19,7 +19,7 @@ spec:
           ports:
             - containerPort: 7080
           env:
-            - name: APP_ENV
-              value: "{{ .Values.env.APP_ENV }}"
+            - name: ENV
+              value: "{{ .Values.env.ENV }}"
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
