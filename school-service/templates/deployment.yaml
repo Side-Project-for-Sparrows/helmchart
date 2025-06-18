@@ -21,3 +21,14 @@ spec:
           imagePullPolicy: "{{ .Values.image.pullPolicy }}"
           ports:
             - containerPort: {{ .Values.containerPort }}
+          env:
+            - name: NEIS_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: school-secret
+                  key: neis.api-key
+            - name: KAKAO_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: school-secret
+                  key: kakao.api-key
