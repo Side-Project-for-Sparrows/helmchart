@@ -7,3 +7,5 @@ image:
 
 replicaCount: 1
 containerPort: 8080
+
+nodePort: 30081
