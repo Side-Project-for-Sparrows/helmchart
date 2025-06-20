@@ -9,3 +9,10 @@ replicaCount: 1
 containerPort: 8080
 
 nodePort: 30081
+
+postgresql:
+  name: search-postgresql
+  user: myuser
+  password: mypw
+  db: mydb
+  nodeport: 30004
