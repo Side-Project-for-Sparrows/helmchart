@@ -19,11 +19,11 @@ metadata:
   labels:
     app: redis
 spec:
-  type: NodePort  # 외부에서 접근할 수 있도록 NodePort 사용
+  type: NodePort
   ports:
     - port: 6379
       targetPort: 6379
-      nodePort: 30079  # 30000~32767 범위 내에서 지정 가능
+      nodePort: 30079
   selector:
     app: redis
 ---
