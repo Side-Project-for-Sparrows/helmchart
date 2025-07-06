@@ -1,0 +1,16 @@
+name: board
+
+image:
+  repository: ghcr.io/side-project-for-sparrows/board-service
+  tag: stg
+  pullPolicy: Always
+
+replicaCount: 1
+containerPort: 8080
+
+postgresql:
+  name: board-postgresql
+  user: myuser
+  password: mypw
+  db: mydb
+  nodeport: 30003
