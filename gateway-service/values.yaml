@@ -48,8 +48,8 @@ ingress-nginx:
         https: 30443
     admissionWebhooks:
       enabled: false
-      patch:
-        enabled: true
+      #patch:
+        #enabled: true
 metrics-server:
   namespace: kube-system
   args:
