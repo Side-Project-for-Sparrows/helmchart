@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: sparrow-services
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/Side-Project-for-Sparrows/helmchart
+        revision: main
+        directories:
+          - path: "*/"     # helmchart/post, helmchart/auth 등 자동 탐색
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/Side-Project-for-Sparrows/helmchart
+        targetRevision: main
+        path: '{{path}}'
+        helm:
+          valueFiles:
+            - values.yaml
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
