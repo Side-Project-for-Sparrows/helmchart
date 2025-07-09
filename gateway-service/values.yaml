@@ -46,6 +46,10 @@ ingress-nginx:
       nodePorts:
         http: 30080
         https: 30443
+    admissionWebhooks:
+      enabled: true
+      patch:
+        enabled: true
 metrics-server:
   namespace: kube-system
   args:

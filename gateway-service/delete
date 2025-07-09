@@ -1,0 +1,1 @@
+kubectl patch application gateway-service -n argocd -p '{"metadata":{"finalizers":[]}}' --type=merge
