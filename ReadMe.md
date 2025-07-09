@@ -1,5 +1,6 @@
 1. helm dependency update 로  최초1회에 한하여 외부 의존성을 클러스터내에 설치 필요
 - 현재 Nginx Ingress를 그렇게 하였음 (gateway로 연결되는)
+- metrics server을 수동설치하여 hpa 설정 가능
 
 2. local-path 리소스 수동설치 필요 (helm으로 추후 변경 가능)
 

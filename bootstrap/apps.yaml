@@ -9,7 +9,7 @@ spec:
         repoURL: https://github.com/Side-Project-for-Sparrows/helmchart
         revision: main
         directories:
-          - path: "*/"     # helmchart/post, helmchart/auth 등 자동 탐색
+          - path: "*"     # helmchart/post, helmchart/auth 등 자동 탐색
   template:
     metadata:
       name: '{{path.basename}}'
@@ -19,12 +19,10 @@ spec:
         repoURL: https://github.com/Side-Project-for-Sparrows/helmchart
         targetRevision: main
         path: '{{path}}'
-        helm:
-          valueFiles:
-            - values.yaml
+        helm: {}
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{path.basename}}'
+        namespace: default
       syncPolicy:
         automated:
           prune: true
