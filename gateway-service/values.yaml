@@ -47,7 +47,7 @@ ingress-nginx:
         http: 30080
         https: 30443
     admissionWebhooks:
-      enabled: true
+      enabled: false
       patch:
         enabled: true
 metrics-server:
