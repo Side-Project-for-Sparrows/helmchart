@@ -14,3 +14,5 @@ postgresql:
   password: mypw
   db: mydb
   nodeport: 30003
+
+test: x
