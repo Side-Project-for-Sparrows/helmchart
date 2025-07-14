@@ -12,7 +12,7 @@ spec:
       labels:
         app: {{ .Values.name }}
     annotations:
-      version: { { .Values.version } }
+      version: {{ .Values.version }}
     spec:
       containers:
         - name: gateway
