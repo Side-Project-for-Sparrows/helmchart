@@ -16,7 +16,7 @@ spec:
         app: {{ .Values.name }}
         log: "true"
       annotations:
-        force-redeploy: "{{ now | unixEpoch }}"
+        version: "20250714"
     spec:
       containers:
         - name: {{ .Values.name }}
