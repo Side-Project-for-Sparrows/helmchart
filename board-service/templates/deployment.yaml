@@ -16,7 +16,7 @@ spec:
         app: {{ .Values.name }}
         log: "true"
       annotations:
-        version: "20250714"
+        version: {{ .Values.version }}
     spec:
       containers:
         - name: {{ .Values.name }}

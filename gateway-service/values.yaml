@@ -1,5 +1,7 @@
 name: gateway
 
+version: 20250714
+
 image:
   repository: ghcr.io/side-project-for-sparrows/gateway-service
   tag: stg

@@ -1,5 +1,7 @@
 name: board
 
+version: 20250714
+
 image:
   repository: ghcr.io/side-project-for-sparrows/board-service
   tag: stg
