@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  force-redeploy: "{{ now | unixEpoch }}"
   name: {{ .Values.name }}-deployment
   labels:
     app: {{ .Values.name }}
@@ -16,7 +15,7 @@ spec:
         app: {{ .Values.name }}
         log: "true"
       annotations:
-        version: {{ .Values.version }}
+        version: {{ .Values.결 }}
     spec:
       containers:
         - name: {{ .Values.name }}
