@@ -11,8 +11,8 @@ spec:
     metadata:
       labels:
         app: {{ .Values.name }}
-    annotations:
-      version: {{ .Values.version }}
+      annotations:
+        version: {{ .Values.version }}
     spec:
       containers:
         - name: gateway
