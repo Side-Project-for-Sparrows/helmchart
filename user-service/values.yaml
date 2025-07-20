@@ -1,5 +1,7 @@
 name: user
 
+version: v20250720_1
+
 image:
   repository: ghcr.io/side-project-for-sparrows/user-service
   tag: stg
