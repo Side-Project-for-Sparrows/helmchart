@@ -1,6 +1,6 @@
 name: gateway
 
-version: v20250720_1
+version: v20250727_1
 
 image:
   repository: ghcr.io/side-project-for-sparrows/gateway-service
