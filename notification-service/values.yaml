@@ -1,0 +1,18 @@
+name: notification
+
+version: v20250720_1
+
+image:
+  repository: ghcr.io/side-project-for-sparrows/notification-service
+  tag: stg
+  pullPolicy: Always
+
+replicaCount: 1
+containerPort: 8080
+
+postgresql:
+  name: notification-postgresql
+  user: myuser
+  password: mypw
+  db: mydb
+  nodeport: 30005
