@@ -13,6 +13,8 @@ spec:
   template:
     metadata:
       name: '{{path.basename}}'
+      annotations:
+        version: v20250802
     spec:
       project: default
       source:
