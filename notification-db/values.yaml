@@ -13,4 +13,4 @@ postgresql:
   user: myuser
   password: mypw
   db: mydb
-  nodeport: 30001
+  nodeport: 30005
