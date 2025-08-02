@@ -14,7 +14,7 @@ spec:
     metadata:
       name: '{{path.basename}}'
       annotations:
-        version: v20250802
+        version: v20250802_2
     spec:
       project: default
       source:
