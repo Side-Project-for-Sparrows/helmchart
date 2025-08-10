@@ -1,6 +1,6 @@
 name: board
 
-version: v20250724_2
+version: v20250811_1
 
 image:
   repository: ghcr.io/side-project-for-sparrows/board-service
