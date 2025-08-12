@@ -9,10 +9,12 @@ spec:
   type: {{ .Values.service.type }}
   externalTrafficPolicy: {{ .Values.service.externalTrafficPolicy }}
   ports:
-    - port: {{ .Values.service.httpPort }}
+    - name: http
+      port: {{ .Values.service.httpPort }}
       targetPort: {{ .Values.service.targetHttpPort }}
       protocol: TCP
-    - port: {{ .Values.service.httpsPort }}
+    - name: https
+      port: {{ .Values.service.httpsPort }}
       targetPort: {{ .Values.service.targetHttpsPort }}
       protocol: TCP
   selector:
