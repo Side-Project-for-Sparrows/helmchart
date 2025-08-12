@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/Side-Project-for-Sparrows/helmchart
     targetRevision: main
-    path: applicationsets/metallb/application
+    path: applicationsets/apps/metallb/application
     directory:
       recurse: false
       include: "*.yaml"
