@@ -40,28 +40,29 @@ resources:
     cpu: 500m
     memory: 256Mi
 
-ingress:
-  enabled: true
-  className: nginx
-  host: api.sparrow.com
-  path: /(.*)
-  pathType: Prefix
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
-
-ingress-nginx:
-  controller:
-    service:
-      type: NodePort
-      nodePorts:
-        http: 30080
-        https: 30443
-    admissionWebhooks:
-      enabled: false
-      #patch:
-        #enabled: true
 metrics-server:
   namespace: kube-system
   args:
     - --kubelet-insecure-tls
     - --kubelet-preferred-address-types=InternalIP
+
+#ingress:
+#  enabled: true
+#  className: nginx
+#  host: api.sparrow.com
+#  path: /(.*)
+#  pathType: Prefix
+#  annotations:
+#    nginx.ingress.kubernetes.io/rewrite-target: /$1
+
+#ingress-nginx:
+#  controller:
+#    service:
+#      type: NodePort
+#      nodePorts:
+#        http: 30080
+#        https: 30443
+#    admissionWebhooks:
+#      enabled: false
+#      #patch:
+#        #enabled: true
