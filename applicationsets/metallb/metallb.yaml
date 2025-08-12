@@ -16,7 +16,7 @@ spec:
           - name: metallb-l2
             namespace: metallb-system
             repoURL: https://github.com/Side-Project-for-Sparrows/helmchart
-            path: bootstrap/metallb # CR ㅇㅇ
+            path: applicationsets/metallb # CR ㅇㅇ
             targetRevision: main
   template:
     metadata:
