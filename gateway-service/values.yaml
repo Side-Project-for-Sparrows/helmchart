@@ -10,10 +10,18 @@ image:
 replicaCount: 2
 containerPort: 7080
 
+ipPool: home-pool
+vip: 192.168.1.2
+
 service:
-  type: ClusterIP
-  port: 80
-  targetPort: 7080
+  externalTrafficPolicy: Local
+
+  type: LoadBalancer
+  httpPort: 80
+  targetHttpPort: 7080
+
+  httpsPort: 443
+  targetHttpsPort: 443
 
 env:
   ENV: stg

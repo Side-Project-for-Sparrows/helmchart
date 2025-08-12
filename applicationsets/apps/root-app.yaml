@@ -9,6 +9,10 @@ spec:
     repoURL: https://github.com/Side-Project-for-Sparrows/helmchart
     targetRevision: main
     path: applicationsets/apps
+    directory:
+      recurse: true
+      include: "*.yaml"
+      exclude: "root-app.yaml"  # 이것도 문자열 하나만
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
