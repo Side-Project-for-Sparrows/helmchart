@@ -12,8 +12,8 @@ spec:
     - port: {{ .Values.service.httpPort }}
       targetPort: {{ .Values.service.targetHttpPort }}
       protocol: TCP
-    - port: { { .Values.service.httpsPort } }
-      targetPort: { { .Values.service.targetHttpsPort } }
+    - port: {{ .Values.service.httpsPort }}
+      targetPort: {{ .Values.service.targetHttpsPort }}
       protocol: TCP
   selector:
     app: {{ .Values.name }}
