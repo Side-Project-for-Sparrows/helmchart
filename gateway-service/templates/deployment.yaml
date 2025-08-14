@@ -14,14 +14,30 @@ spec:
       annotations:
         version: {{ .Values.version }}
     spec:
+      securityContext:
+        fsGroup: 2000
       containers:
         - name: gateway
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: 7080
+            - containerPort: 8443
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 2000
           env:
             - name: ENV
               value: "{{ .Values.env.ENV }}"
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: cert
+              mountPath: /etc/tls
+              readOnly: true
+      volumes:
+      - name: cert
+        secret:
+          secretName: gateway-cert
+          defaultMode: 0640              # crt/key 퍼미션
+

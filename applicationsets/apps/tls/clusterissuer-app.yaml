@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cm-clusterissuer
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cert-manager
+  source:
+    repoURL: https://github.com/Side-Project-for-Sparrows/helmchart
+    path: applicationsets/apps/tls/certificate/clusterissuer   # 여기에 실제 매니페스트 저장
+    targetRevision: main
+  syncPolicy:
+    automated: { prune: true, selfHeal: true }

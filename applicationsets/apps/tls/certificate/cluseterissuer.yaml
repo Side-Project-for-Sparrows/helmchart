@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-dns
+spec:
+  acme:
+    email: unstoppableworm@gmail.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef: { name: letsencrypt-key }
+    solvers:
+      - dns01:
+          cloudflare:
+            apiTokenSecretRef: { name: cf-api-token, key: token }
