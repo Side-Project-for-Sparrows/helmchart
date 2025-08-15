@@ -11,7 +11,7 @@ spec:
     namespace: cert-manager
   source:
     repoURL: https://github.com/Side-Project-for-Sparrows/helmchart
-    path: applicationsets/customresource/tls/clusterissuer   # 여기에 실제 매니페스트 저장
+    path: applicationsets/customresource/tls   # 여기에 실제 매니페스트 저장
     targetRevision: main
   syncPolicy:
     automated: { prune: true, selfHeal: true }
