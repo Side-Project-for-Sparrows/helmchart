@@ -21,7 +21,7 @@ service:
   targetHttpPort: 7080
 
   httpsPort: 443
-  targetHttpsPort: 443
+  targetHttpsPort: 8443
 
 env:
   ENV: stg
