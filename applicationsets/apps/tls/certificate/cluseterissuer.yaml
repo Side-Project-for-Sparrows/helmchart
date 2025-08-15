@@ -1,13 +1,19 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: letsencrypt-dns
+  name: selfsigned
 spec:
-  acme:
-    email: unstoppableworm@gmail.com
-    server: https://acme-v02.api.letsencrypt.org/directory
-    privateKeySecretRef: { name: letsencrypt-key }
-    solvers:
-      - dns01:
-          cloudflare:
-            apiTokenSecretRef: { name: cf-api-token, key: token }
+  selfSigned: {}     # 끝. email/server/solvers 같은 ACME 항목 없음
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: gateway-cert
+  namespace: default
+spec:
+  secretName: gateway-cert
+  dnsNames:
+    - unstoppableworm.iptime.org
+  issuerRef:
+    kind: ClusterIssuer
+    name: selfsigned
